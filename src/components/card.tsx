@@ -44,7 +44,7 @@ export interface NewsCardProps {
 
 export function NewsCard({ image, title, description, date, onPressMore }: NewsCardProps) {
     return (
-        <View style={styles.newsCard}>
+        <TouchableOpacity style={styles.newsCard} onPress={onPressMore} activeOpacity={0.8}>
             <Image source={{ uri: image }} style={styles.newsImage} />
             {(title || description || date) && (
                 <View style={styles.newsInfo}>
@@ -54,15 +54,13 @@ export function NewsCard({ image, title, description, date, onPressMore }: NewsC
                         <View style={styles.newsFooter}>
                             {date ? <Text style={styles.newsDate}>{date}</Text> : null}
                             {onPressMore ? (
-                                <TouchableOpacity onPress={onPressMore}>
-                                    <Text style={styles.newsMore}>Ver mais</Text>
-                                </TouchableOpacity>
+                                <Text style={styles.newsMore}>Ver mais</Text>
                             ) : null}
                         </View>
                     )}
                 </View>
             )}
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -77,7 +75,7 @@ export interface EventCardProps {
 export function EventCard({ image, title, date, description, location, onPressMore }: EventCardProps) {
     return (
         <View style={styles.eventCard}>
-            <NewsCard image={image} />
+            <NewsCard image={image} onPressMore={onPressMore} />
             <View style={styles.eventInfo}>
                 <Text style={styles.eventTitle}>{title}</Text>
                 {date ? <Text style={styles.eventDate}>{date}</Text> : null}

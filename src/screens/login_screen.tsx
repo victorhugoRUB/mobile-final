@@ -29,7 +29,7 @@ export default function LoginScreen() {
         setLoading(true);
         try {
             const response = await authService.login(email, senha);
-            Alert.alert('Sucesso', `Bem-vindo, ${response.usuario}!`);
+            Alert.alert('Sucesso', `Bem-vindo, ${response.user.name}!`);
             navigation.navigate('Home');
         } catch (error: any) {
             Alert.alert('Erro', error.message || 'Não foi possível fazer login.');

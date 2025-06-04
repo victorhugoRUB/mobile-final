@@ -1,9 +1,7 @@
-const BASE_URL = 'https://back-end-quhb.onrender.com';
+import { LoginResponse } from "./data/entity/login_entity";
+import { PostEntity } from "./data/entity/post_entity";
 
-interface LoginResponse {
-    token: string;
-    usuario: string;
-}
+const BASE_URL = 'https://back-end-quhb.onrender.com';
 
 async function login(email: string, password: string): Promise<LoginResponse> {
     console.log('Tentando fazer login com:', { email, password });
@@ -26,6 +24,21 @@ async function login(email: string, password: string): Promise<LoginResponse> {
     return data;
 }
 
+async function getPosts(): Promise<PostEntity[]> {
+    const response = await fetch(`${BASE_URL}/post`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || 'Erro ao buscar posts.');
+    }
+    return data;
+}
+
 export default {
     login,
+    getPosts,
 };
