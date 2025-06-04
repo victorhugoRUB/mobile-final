@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
+const { width } = Dimensions.get('window');
 
 export interface SermonCardProps {
     image: string;
@@ -97,26 +99,28 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         marginRight: 8,
         position: 'relative',
+        maxWidth: width * 0.95,
     },
     sermonImage: {
         width: '100%',
-        height: 160,
+        aspectRatio: 16 / 9,
         borderRadius: 8,
     },
     playIconContainer: {
         position: 'absolute',
-        top: '40%',
-        left: '40%',
+        top: '50%',
+        left: '50%',
+        transform: [{ translateX: -24 }, { translateY: -24 }],
         zIndex: 2,
     },
     sermonTitle: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: Math.max(14, width * 0.04),
         marginTop: 8,
         color: '#222',
     },
     sermonDate: {
-        fontSize: 14,
+        fontSize: Math.max(12, width * 0.035),
         color: '#666',
     },
     newsCard: {
@@ -131,22 +135,22 @@ const styles = StyleSheet.create({
     },
     newsImage: {
         width: '100%',
-        height: 120,
+        aspectRatio: 16 / 9,
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
     },
     newsInfo: {
-        padding: 8,
+        padding: Math.max(6, width * 0.02),
         backgroundColor: '#f7f7f7',
     },
     newsTitle: {
         fontWeight: 'bold',
-        fontSize: 15,
+        fontSize: Math.max(13, width * 0.038),
         marginBottom: 2,
         color: '#222',
     },
     newsDesc: {
-        fontSize: 13,
+        fontSize: Math.max(11, width * 0.032),
         color: '#444',
         marginBottom: 4,
     },
@@ -156,11 +160,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     newsDate: {
-        fontSize: 12,
+        fontSize: Math.max(10, width * 0.03),
         color: '#888',
     },
     newsMore: {
-        fontSize: 12,
+        fontSize: Math.max(10, width * 0.03),
         color: '#007bff',
     },
     eventCard: {
@@ -171,34 +175,36 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderWidth: 1,
         borderColor: '#eee',
+        minWidth: width * 0.65,
+        maxWidth: width * 0.95,
     },
     eventInfo: {
-        padding: 8,
+        padding: Math.max(6, width * 0.02),
         backgroundColor: '#f7f7f7',
     },
     eventTitle: {
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: Math.max(12, width * 0.036),
         marginBottom: 2,
         color: '#222',
     },
     eventDate: {
-        fontSize: 12,
+        fontSize: Math.max(10, width * 0.03),
         color: '#888',
         marginBottom: 2,
     },
     eventDesc: {
-        fontSize: 13,
+        fontSize: Math.max(11, width * 0.032),
         color: '#444',
         marginBottom: 2,
     },
     eventLocation: {
-        fontSize: 12,
+        fontSize: Math.max(10, width * 0.03),
         color: '#888',
         marginBottom: 2,
     },
     eventMore: {
-        fontSize: 12,
+        fontSize: Math.max(10, width * 0.03),
         color: '#007bff',
         marginTop: 2,
     },

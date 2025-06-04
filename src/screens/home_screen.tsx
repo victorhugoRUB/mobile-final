@@ -107,7 +107,7 @@ export default function HomeScreen() {
                 showsHorizontalScrollIndicator={false}
                 style={{ marginVertical: 12 }}
                 renderItem={({ item }) => (
-                    <View style={{ width: width * 0.6 }}>
+                    <View style={{ width: width * 0.6, maxWidth: 350, minWidth: 220 }}>
                         <NewsCard
                             image={
                                 news.length <= 0 && getIdFromVideoUrl(item.video_url)
@@ -159,7 +159,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 16,
+        paddingHorizontal: width * 0.04,
+        backgroundColor: '#fff',
     },
     sectionTitle: {
         fontSize: 28,
